@@ -1,0 +1,14 @@
+@layer utilities {
+  @keyframes bounce-light {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-1%); }
+  }
+
+  .animate-bounce-light {
+    animation: bounce-light 1s ease-in-out infinite;
+  }
+
+  .tilt-left {
+    animation: tilt-left 0.8s ease-in-out infinite;
+  }
+}

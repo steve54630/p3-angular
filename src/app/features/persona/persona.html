@@ -1,0 +1,25 @@
+@if(loading) {
+  <app-loading />
+} @else {
+<main
+  class="overflow-hidden w-screen bg-gradient-to-br from-indigo-900 via-blue-800 to-cyan-700"
+>
+  <app-persona-header [persona]="persona" />
+  <div class="flex flex-col gap-10 sm:flex-row">
+    <article class="w-fit flex flex-col p-5 gap-10">
+      <app-resist-tab [persona]="persona" />
+      <app-stat-bar [persona]="persona" />
+      <p
+        class="text-white bg-black mt-10 font-bold rounded-2xl text-2xl p-5 font-serif"
+      >
+        {{ persona.description }}
+      </p>
+    </article>
+    <img
+      src="/persona/{{ persona.query }}.webp"
+      alt="{{ persona.name }}"
+      class="max-w-screen h-fit sm:w-100 sm:h-150 sm:flex-1 object-contain animate-bounce-light"
+    />
+  </div>
+</main>
+}

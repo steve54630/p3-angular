@@ -1,0 +1,15 @@
+<div class="grid grid-cols-9 gap-5 -rotate-3 divide-gray-400 ext-center w-full sm:w-fit">
+  @for (r of resists; track r.element) {
+  <div class="flex flex-col  gap-2 items-center">
+    <img
+      src="/element/{{ r.element }}.webp"
+      alt="{{ r.element }}"
+      class="w-full sm:w-15 sm:h-15"
+    />
+    <hr class="border-gray-400" />
+    <div [class]="getTypeClass(r.type) + ' text-[20px] sm:text-l'">
+      {{ r.type }}
+    </div>
+  </div>
+  }
+</div>

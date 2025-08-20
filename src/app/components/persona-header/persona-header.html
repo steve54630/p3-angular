@@ -1,0 +1,39 @@
+<h1
+  class="w-full text-4xl bg-gradient-to-r -rotate-2 mb-6 from-white to-blue-400 flex flex-row justify-between items-center py-5 px-5 gap-3 text-black"
+>
+  <button
+    class="text-xs"
+    routerLink="/personas/{{ personaStore.getPreviousPersona(persona) }}"
+  >
+    &#8592; Back
+  </button>
+  <section class="w-fit h-fit">
+    <div class="flex flex-row gap-2">
+      <img
+        src="{{ arcana.image }}"
+        alt="{{ persona.name }}"
+        class="w-[30%] sm:w-[5%] h-fit"
+      />
+      <p class="font-extrabold text-gray-500 italic inline-flex items-center">
+        {{ arcana.name.toLocaleUpperCase() }}
+      </p>
+      <p class="text-[20px] inline-flex items-center">{{ persona.name }}</p>
+    </div>
+    <span class="text-[25px] italic">LV</span
+    ><span class="font-bold">{{ persona.level }}</span>
+  </section>
+  <button
+    matFab
+    [class.bg-red-500]="isFavorite"
+    class="hover:bg-blue-300 rounded-2xl p-2"
+    (click)="toggleFavoris(persona)"
+  >
+    <mat-icon [ngClass]="isFavorite ? 'text-red-500' : 'primary'"> favorite </mat-icon>
+  </button>
+  <button
+    routerLink="/personas/{{ personaStore.getNextPersona(persona) }}"
+    class="text-xs"
+  >
+    Next &#8594;
+  </button>
+</h1>

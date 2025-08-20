@@ -1,0 +1,17 @@
+@if (loading) {
+<app-loading />
+} @else {
+<main
+  class="gap-3 flex sm:flex-row overflow-hidden flex-col h-screen bg-gradient-to-br from-indigo-900 via-blue-800 to-cyan-700"
+>
+  <!-- <app-filter-menu [personas]="personas" (personasChange)="personas = $event" /> -->
+   <button class="absolute top-5 right-5" matButton="elevated" (click)="openDialog()">Filtres</button>
+  <section
+    class="w-screen  flex flex-col gap-3 h-screen mx-6 my-5 overflow-y-auto"
+  >
+    @for(persona of personas ; track persona.id) {
+    <app-persona-link [persona]="persona" />
+    }
+  </section>
+</main>
+}

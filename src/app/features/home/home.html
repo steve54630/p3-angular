@@ -1,0 +1,23 @@
+<article
+  class="bg-[url('/home.webp')] bg-cover bg-center min-h-screen text-white flex items-center justify-end"
+>
+  <section class="flex flex-col gap-3 mx-20 lg:mx-50">
+    <div role="navigation" class="flex flex-col mt-30">
+      <app-button
+        routerLink="/personas"
+        class="text-center font-serif -rotate-6"
+        title="Voir les personas"
+      />
+      <app-button
+        routerLink="/favorites"
+        class="text-center font-serif z-30 relative -rotate-9 text-gray-500"
+        title="Voir les favoris"
+      />
+      <app-button
+        routerLink="/personas/{{getRandomPersona()}}"
+        class="text-center font-serif -rotate-10"
+        title="Persona au hasard"
+      />
+    </div>
+  </section>
+</article>

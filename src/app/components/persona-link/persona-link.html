@@ -1,0 +1,21 @@
+<button
+  class="flex flex-row gap-3 mx-10 w-full rounded-2xl"
+  (mouseenter)="hover = true"
+  (mouseleave)="hover = false"
+  [class.bg-white]="hover"
+  routerLink="/personas/{{ persona.query }}"
+>
+  <p
+    [ngClass]="hover ? 'text-black bg-blue-200' : 'text-blue-300 bg-black'"
+    class="rounded-2xl text-[20px] p-5 font-serif"
+  >
+    {{ persona.arcana }}
+  </p>
+  <p [class.text-black]="hover" [class.text-blue-300]="!hover">
+    <span class="text-[25px] italic" [class.hidden]="!hover">LV </span>
+    <span class="text-2xl font-bold">{{ persona.level }} {{ persona.name }}</span>
+   @if(persona.dlc == 1) {<span class="italic text-[15px]"
+      > DLC</span
+    >}
+  </p>
+</button>

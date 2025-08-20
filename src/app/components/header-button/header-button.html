@@ -1,0 +1,16 @@
+<button
+  (click)="call ? call() : null"
+  [routerLink]="link"
+  routerLinkActive = 'bg-blue-300 disabled'
+  #rla="routerLinkActive"
+  [routerLinkActiveOptions]="{ exact: true }"
+  class="text-center transition-all text-[10px] md:w-12 w-fit md:h-12 text-black font-bold md:text-xl font-mono rounded-full border px-2"
+  [ngClass]="{
+    'md:w-32': hover || isMobile || rla.isActive,
+    'bg-white hover:bg-gray-200': !rla.isActive
+  }"
+  (mouseenter)="hover = true"
+  (mouseleave)="hover = false"
+>
+  <span [class.hidden]="!hover && !isMobile && !rla.isActive">{{ title }}</span>
+</button>
