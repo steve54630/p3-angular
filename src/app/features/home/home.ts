@@ -11,7 +11,7 @@ import { PersonaStore } from '../../services/persona-store';
 })
 export class Home {
 
-  constructor(private store: PersonaStore) {}
+  constructor(protected store: PersonaStore) {}
 
   getRandomPersona(): string | undefined {
     return this.store.getRandomPersona();

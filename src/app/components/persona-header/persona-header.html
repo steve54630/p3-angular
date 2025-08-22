@@ -25,11 +25,15 @@
   <button
     matFab
     [class.bg-red-500]="isFavorite"
+    [class.bg-white]="!isFavorite"
     class="hover:bg-blue-300 rounded-2xl p-2"
     (click)="toggleFavoris(persona)"
   >
-    <mat-icon [ngClass]="isFavorite ? 'text-red-500' : 'primary'"> favorite </mat-icon>
+    <mat-icon> favorite </mat-icon>
   </button>
+  @if(persona.dlc == 1) {
+  <span class="text-[20px] align-middle justify-center flex"> <mat-icon class="primary"> attach_money </mat-icon>DLC </span>
+  }
   <button
     routerLink="/personas/{{ personaStore.getNextPersona(persona) }}"
     class="text-xs"

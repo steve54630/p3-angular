@@ -5,12 +5,43 @@
   class="gap-3 flex sm:flex-row overflow-hidden flex-col h-screen bg-gradient-to-br from-indigo-900 via-blue-800 to-cyan-700"
 >
   <!-- <app-filter-menu [personas]="personas" (personasChange)="personas = $event" /> -->
-   <button class="absolute top-5 right-5" matButton="elevated" (click)="openDialog()">Filtres</button>
+  <button
+    class="absolute bottom-5 rounded-2xl bg-blue-700 right-5"
+    matButton="elevated"
+    (click)="openDialog()"
+  >
+    Filtres
+  </button>
   <section
-    class="w-screen  flex flex-col gap-3 h-screen mx-6 my-5 overflow-y-auto"
+    class="w-screen flex flex-col gap-3 h-screen mx-6 my-5 overflow-y-auto scrollbar no-scrollbar"
   >
     @for(persona of personas ; track persona.id) {
-    <app-persona-link [persona]="persona" />
+    <app-persona-link [persona]="persona" (personaHover)="onHover($event)" />
+    }
+  </section>
+  <section
+    class="relative lg:flex justify-center items-center hidden sm:w-fit sm:h-screen"
+  >
+    <img
+      [src]="persona ? `/resized/${persona.query}.webp` :'/arcana/tarot.png'"
+      alt="Persona mask"
+      class="max-w-full max-h-[800px] object-contain"
+    />
+    @if (persona) {
+    <h1
+      class="absolute bottom-60 left-1/2 leading-11 -translate-x-1/2 w-[300px] text-center whitespace-normal text-blue-300 text-shadow-2xs text-shadow-black text-[80px] md:text-[60px] sm:text-[40px] font-[Anton] -rotate-2"
+    >
+      @for(word of arcana!.phrase.split(' '); track $index) {
+      <span class="inline whitespace-nowrap">
+        @for (letter of word; track $index) {
+        <span
+          class="inline-block py-2 animate-wave"
+          [style.animation-delay]="$index * 0.05 + 's'"
+        >
+          {{ letter }}
+        </span>
+        } </span>&nbsp;}
+    </h1>
     }
   </section>
 </main>

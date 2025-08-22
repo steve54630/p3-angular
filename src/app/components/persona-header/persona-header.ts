@@ -10,7 +10,7 @@ import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-persona-header',
-  imports: [RouterLink, MatIconModule, NgClass],
+  imports: [RouterLink, MatIconModule],
   templateUrl: './persona-header.html',
   styleUrl: './persona-header.css',
 })

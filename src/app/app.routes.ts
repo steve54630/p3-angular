@@ -3,7 +3,7 @@ import { Home } from './features/home/home';
 import { Personas } from './features/personas/personas';
 import { Persona } from './features/persona/persona';
 import { MainLayout } from './layout/main-layout/main-layout';
-import { Favorites } from './features/favorites/favorites';
+import { personasResolver } from './resolvers/personasResolver';
 
 export const routes: Routes = [
   {
@@ -17,6 +17,7 @@ export const routes: Routes = [
       {
         path: 'personas',
         component: Personas,
+        resolve: { personas: personasResolver },
       },
       {
         path: 'personas/:serve',
@@ -24,7 +25,8 @@ export const routes: Routes = [
       },
       {
         path: 'favorites',
-        component: Favorites,
+        component: Personas,
+        resolve: { personas: personasResolver },
       },
     ],
   },

@@ -1,13 +1,13 @@
 <button
-  class="flex flex-row gap-3 mx-10 w-full rounded-2xl"
-  (mouseenter)="hover = true"
-  (mouseleave)="hover = false"
+  class="flex flex-row gap-3 mx-10 w-3/4 rounded-2xl"
+  (mouseenter)="hover = true; onMouseEnter()"
+  (mouseleave)="hover = false; onMouseLeave()"
   [class.bg-white]="hover"
   routerLink="/personas/{{ persona.query }}"
 >
   <p
     [ngClass]="hover ? 'text-black bg-blue-200' : 'text-blue-300 bg-black'"
-    class="rounded-2xl text-[20px] p-5 font-serif"
+    class="rounded-2xl text-[20px] py-2 px-5 font-serif"
   >
     {{ persona.arcana }}
   </p>
@@ -18,4 +18,8 @@
       > DLC</span
     >}
   </p>
+  @if (router.url == '/personas' && isFavorite) {
+    <mat-icon class="primary"
+      > favorite </mat-icon>
+  }
 </button>
