@@ -13,27 +13,15 @@ export class Api {
   constructor(private http: HttpClient) {}
 
   getPersonas(): Observable<IPersona[]> {
-    return this.http.get<IPersona[]>(`${this.url}/personas`).pipe(
-      catchError((err) => {
-        console.warn('API failed, using local JSON fallback', err);
-        return this.http.get<IPersona[]>('/personas.json');
-      })
-    )
+    return this.http.get<IPersona[]>('/personas.json');
   }
 
   getPersona(serve: string): Observable<IPersona> {
-    return this.http.get<IPersona>(`${this.url}/personas/${serve}`).pipe(
-      catchError((err) => {
-        console.warn('API failed, using local JSON fallback', err);
-        return this.http
-          .get<IPersona[]>(`/personas.json`)
-          .pipe(
-            map(
-              (personas) => personas.find((persona) => persona.query == serve)!
-            )
-          );
-      })
-    );
+    return this.http
+      .get<IPersona[]>(`/personas.json`)
+      .pipe(
+        map((personas) => personas.find((persona) => persona.query == serve)!)
+      );
   }
 
   getLinks(): Observable<ApiReponse> {
