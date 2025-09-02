@@ -1,24 +1,24 @@
 @if (loading) {
 <app-loading />
-} @else {
+} @else if (personas.length > 0) {
 <main
   class="gap-3 flex sm:flex-row overflow-hidden flex-col h-screen bg-gradient-to-br from-indigo-900 via-blue-800 to-cyan-700"
 >
   <section
-  class="relative w-screen flex flex-col gap-3 h-screen mx-6 overflow-y-auto scrollbar no-scrollbar"
->
-  <button
-    class="sticky top-10 self-end p-2 l-10 sm:w-30 mr-10 text-xl sm:text-2xl bold rounded-2xl animate-wave bg-cyan-400"
-    matButton="elevated"
-    (click)="openDialog()"
+    class="relative w-screen flex flex-col gap-3 h-screen mx-6 overflow-y-auto scrollbar no-scrollbar"
   >
-    Filtres
-  </button>
+    <button
+      class="sticky top-10 self-end p-2 l-10 sm:w-30 mr-10 text-xl sm:text-2xl bold rounded-2xl animate-wave bg-cyan-400"
+      matButton="elevated"
+      (click)="openDialog()"
+    >
+      Filtres
+    </button>
 
-  @for(persona of personas ; track persona.id) {
+    @for(persona of personas ; track persona.id) {
     <app-persona-link [persona]="persona" (personaHover)="onHover($event)" />
-  }
-</section>
+    }
+  </section>
 
   <section
     class="relative lg:flex justify-center items-center hidden sm:h-screen sm:w-300"
@@ -41,9 +41,31 @@
         >
           {{ letter }}
         </span>
-        } </span>&nbsp;}
+        } </span
+      >&nbsp;}
     </h1>
     }
   </section>
 </main>
+} @else {
+<div
+  class="flex flex-col items-center justify-center h-screen gap-6 text-center p-6 bg-gradient-to-br from-indigo-900 via-blue-800 to-cyan-700"
+>
+  <h2 class="text-8xl font-bold text-cyan-300 animate-pulse">Aucun persona ici…</h2>
+  <p class="text-gray-400 text-3xl max-w-md">
+    Il semblerait que cette section soit vide pour le moment. @if
+    (this.router.url === '/favorites' &&
+    this.route.snapshot.data['personas'].length === 0) { Essaie d'ajouter des
+    favoris. } @else { Essaie d'autres filtres pour en voir apparaître. }
+  </p>
+  @if (this.route.snapshot.data['personas'].length > 0) {
+  <button
+    class="sticky top-10 self-end p-2 l-10 sm:w-30 mr-10 text-xl sm:text-2xl bold rounded-2xl animate-wave bg-cyan-400"
+    matButton="elevated"
+    (click)="openDialog()"
+  >
+    Filtres
+  </button>
+  }
+</div>
 }
