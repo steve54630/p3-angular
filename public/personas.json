@@ -2873,6 +2873,29 @@
     "query": "nebiros"
   },
   {
+    "id": 114.5,
+    "name": "Moros",
+    "arcana": "Hermit",
+    "level": 56,
+    "description": "No description (Strega Only)",
+    "image": "https://megatenwiki.com/images/4/4a/P3_Moros_Artwork.png",
+    "strength": 46,
+    "magic": 50,
+    "endurance": 42,
+    "agility": 45,
+    "luck": 35,
+    "weak": [],
+    "resists": [],
+    "reflects": [
+      "Fire",
+      "Dark"
+    ],
+    "absorbs": [],
+    "nullifies": [],
+    "dlc": 0,
+    "query": "moros"
+  },
+  {
     "id": 114,
     "name": "Kumbhanda",
     "arcana": "Hermit",
@@ -3106,29 +3129,6 @@
     "nullifies": [],
     "dlc": 0,
     "query": "hypnos"
-  },
-  {
-    "id": 123,
-    "name": "Moros",
-    "arcana": "Fortune",
-    "level": 56,
-    "description": "No description (Strega Only)",
-    "image": "https://megatenwiki.com/images/4/4a/P3_Moros_Artwork.png",
-    "strength": 46,
-    "magic": 50,
-    "endurance": 42,
-    "agility": 45,
-    "luck": 35,
-    "weak": [],
-    "resists": [],
-    "reflects": [
-      "Fire",
-      "Dark"
-    ],
-    "absorbs": [],
-    "nullifies": [],
-    "dlc": 0,
-    "query": "moros"
   },
   {
     "id": 124,

@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Api } from '../../services/api';
 import { IPersona } from '../../interfaces/persona';
 import { Loading } from '../loading/loading';
 import { PersonaLink } from '../../components/persona-link/persona-link';
@@ -10,6 +9,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Arcana } from '../../interfaces/arcana';
 import { arcanas } from '../../data/arcana';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PersonaStore } from '../../services/persona-store';
+import { FavorisStore } from '../../services/favoris-store';
 
 @Component({
   selector: 'app-personas',
@@ -20,13 +21,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class Personas implements OnInit {
   subscription!: Subscription;
   loading: boolean = true;
-  private personaService = inject(Api);
   personas: IPersona[] = [];
   readonly dialog = inject(MatDialog);
   persona: IPersona | undefined;
   arcana: Arcana | undefined;
 
-  constructor(protected route: ActivatedRoute) {}
+  constructor(
+    protected route: ActivatedRoute,
+    protected router: Router,
+    protected personaStore: PersonaStore,
+    protected favorisStore: FavorisStore
+  ) {}
 
   ngAfterViewInit() {
     const spans = document.querySelectorAll('.animate-wave');
@@ -49,7 +54,7 @@ export class Personas implements OnInit {
   openDialog() {
     const dialogRef = this.dialog.open(FilterMenu, {
       data: {
-        personas: this.personas,
+        personas: this.route.snapshot.data['personas']
       },
     });
 
@@ -58,7 +63,7 @@ export class Personas implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.personas = this.route.snapshot.data['personas'];
     this.loading = false;
   }

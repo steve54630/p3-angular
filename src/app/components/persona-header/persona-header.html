@@ -3,12 +3,12 @@
 >
   <button
     class="text-xs"
-    routerLink="/personas/{{ personaStore.getPreviousPersona(persona) }}"
+    (click)="getPreviousPersona(persona)"
   >
-    &#8592; Back
+    <img src="/navigate/left.png" class="w-10 h-10" alt="Previous" />
   </button>
   <section class="w-fit h-fit">
-    <div class="flex flex-row gap-2">
+    <div class="flex flex-col sm:flex-row  gap-2">
       <img
         src="{{ arcana.image }}"
         alt="{{ persona.name }}"
@@ -35,9 +35,9 @@
   <span class="text-[20px] align-middle justify-center flex"> <mat-icon class="primary"> attach_money </mat-icon>DLC </span>
   }
   <button
-    routerLink="/personas/{{ personaStore.getNextPersona(persona) }}"
+    (click)="getNextPersona(persona)"
     class="text-xs"
   >
-    Next &#8594;
+    <img src="/navigate/right.png" class="w-10 h-10" alt="Next" />
   </button>
 </h1>

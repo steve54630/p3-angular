@@ -4,23 +4,24 @@
 <main
   class="gap-3 flex sm:flex-row overflow-hidden flex-col h-screen bg-gradient-to-br from-indigo-900 via-blue-800 to-cyan-700"
 >
-  <!-- <app-filter-menu [personas]="personas" (personasChange)="personas = $event" /> -->
+  <section
+  class="relative w-screen flex flex-col gap-3 h-screen mx-6 overflow-y-auto scrollbar no-scrollbar"
+>
   <button
-    class="absolute bottom-5 rounded-2xl bg-blue-700 right-5"
+    class="sticky top-10 self-end p-2 l-10 sm:w-30 mr-10 text-xl sm:text-2xl bold rounded-2xl animate-wave bg-cyan-400"
     matButton="elevated"
     (click)="openDialog()"
   >
     Filtres
   </button>
-  <section
-    class="w-screen flex flex-col gap-3 h-screen mx-6 my-5 overflow-y-auto scrollbar no-scrollbar"
-  >
-    @for(persona of personas ; track persona.id) {
+
+  @for(persona of personas ; track persona.id) {
     <app-persona-link [persona]="persona" (personaHover)="onHover($event)" />
-    }
-  </section>
+  }
+</section>
+
   <section
-    class="relative lg:flex justify-center items-center hidden sm:w-fit sm:h-screen"
+    class="relative lg:flex justify-center items-center hidden sm:h-screen sm:w-300"
   >
     <img
       [src]="persona ? `/resized/${persona.query}.webp` :'/arcana/tarot.png'"

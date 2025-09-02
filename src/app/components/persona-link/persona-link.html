@@ -13,7 +13,7 @@
   </p>
   <p [class.text-black]="hover" [class.text-blue-300]="!hover">
     <span class="text-[25px] italic" [class.hidden]="!hover">LV </span>
-    <span class="text-2xl font-bold">{{ persona.level }} {{ persona.name }}</span>
+    <span class="sm:text-2xl text-lg font-bold">{{ persona.level }} {{ persona.name }}</span>
    @if(persona.dlc == 1) {<span class="italic text-[15px]"
       > DLC</span
     >}

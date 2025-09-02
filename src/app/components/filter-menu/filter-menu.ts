@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, inject, Input, OnInit, Output } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { Arcana } from '../../interfaces/arcana';
@@ -11,11 +11,12 @@ import { FilterMenuUtils } from './filter-menu.utils';
 import {
   MAT_DIALOG_DATA,
   MatDialogActions,
-  MatDialogClose,
   MatDialogContent,
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
+import { FavorisStore } from '../../services/favoris-store';
+import { IPersonaProvider } from '../../interfaces/personaProvider';
 
 @Component({
   selector: 'app-filter-menu',
@@ -29,34 +30,28 @@ import {
     MatButtonModule,
     MatDialogTitle,
     MatDialogContent,
-    MatDialogActions,
-    MatDialogClose,
+    MatDialogActions
   ],
   templateUrl: './filter-menu.html',
   styleUrl: './filter-menu.css',
 })
 export class FilterMenu implements OnInit {
   @Input() personas!: IPersona[];
+  @Input() personaStore!: IPersonaProvider;
 
-  readonly dialogRef = inject(MatDialogRef<FilterMenu>);
-  readonly data = inject<{
-    personas: IPersona[];
-  }>(MAT_DIALOG_DATA);
+  constructor(
+    @Inject(MAT_DIALOG_DATA) private data: { personas: IPersona[] },
+    private dialogRef: MatDialogRef<FilterMenu>
+  ) {}
 
-  arcanaChoice: string = 'Toutes les arcanes';
-  personaChoice: string = '';
   selectedArcana: any;
   arcanes: Arcana[] = arcanas;
   filterUtils!: FilterMenuUtils;
 
-  constructor(private personaStore: PersonaStore) {}
-
   ngOnInit(): void {
     this.filterUtils = new FilterMenuUtils(
-      this.personaStore,
-      this.dialogRef,
-      this.arcanaChoice,
-      this.personaChoice
+      this.data.personas,
+      this.dialogRef
     );
   }
   

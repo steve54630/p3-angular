@@ -5,8 +5,8 @@ import { IPersona } from '../../interfaces/persona';
 import { Router, RouterLink } from '@angular/router';
 import { PersonaStore } from '../../services/persona-store';
 import { FavorisStore } from '../../services/favoris-store';
-import {MatIconModule} from '@angular/material/icon';
-import { NgClass } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { map, take, tap } from 'rxjs';
 
 @Component({
   selector: 'app-persona-header',
@@ -23,6 +23,24 @@ export class PersonaHeader {
     protected personaStore: PersonaStore,
     protected favorisStore: FavorisStore
   ) {}
+
+  getNextPersona(persona: IPersona) {
+    this.personaStore
+      .getNextPersona$(persona)
+      .pipe(take(1))
+      .subscribe((query) => {
+        if (query) this.router.navigate([`/personas/${query}`]);
+      });
+  }
+
+  getPreviousPersona(persona: IPersona) {
+    this.personaStore
+      .getPreviousPersona$(persona)
+      .pipe(take(1))
+      .subscribe((query) => {
+        if (query) this.router.navigate([`/personas/${query}`]);
+      });
+  }
 
   get arcana(): Arcana {
     return arcanas.find((a) => a.key === this.persona.arcana)!;
@@ -56,14 +74,10 @@ export class PersonaHeader {
 
     switch (event.key) {
       case 'ArrowRight':
-        this.router.navigate([
-          `/personas/${this.personaStore.getNextPersona(this.persona)}`,
-        ]);
+        this.getNextPersona(this.persona);
         break;
       case 'ArrowLeft':
-        this.router.navigate([
-          `/personas/${this.personaStore.getPreviousPersona(this.persona)}`,
-        ]);
+        this.getPreviousPersona(this.persona);
         break;
       default:
         return;

@@ -12,7 +12,9 @@ import { Router } from '@angular/router';
 export class Header {
   constructor(protected personaStore: PersonaStore, private router: Router) {}
 
-  getRandomPersona = (): void => {
-    this.router.navigate([`/personas/${this.personaStore.getRandomPersona()}`]);
+  getRandomPersona(): void {
+    this.personaStore
+      .getRandomPersona$()
+      .subscribe((id) => this.router.navigate([`/personas/${id}`]));
   }
 }

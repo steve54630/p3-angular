@@ -14,7 +14,7 @@
         title="VOIR LES FAVORIS"
       />
       <app-button
-        routerLink="/personas/{{getRandomPersona()}}"
+        (click)="getRandomPersona()"
         class="text-center font-[Bebas_Neue] -rotate-10"
         title="PERSONA AU HASARD"
       />

@@ -1,0 +1,76 @@
+<h2 mat-dialog-title class="text-center text-xl pt-5 font-bold">
+  Légende des éléments
+</h2>
+
+<mat-dialog-content>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <!-- Éléments -->
+    <div class="flex flex-col gap-2">
+      <div class="flex items-center gap-2">
+        <img src="/element/Slash.webp" class="w-8 h-8" alt="Slash" />
+        <span>Slash</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <img src="/element/Pierce.webp" class="w-8 h-8" alt="Pierce" />
+        <span>Pierce</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <img src="/element/Strike.webp" class="w-8 h-8" alt="Strike" />
+        <span>Strike</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <img src="/element/Fire.webp" class="w-8 h-8" alt="Fire" />
+        <span>Feu</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <img src="/element/Ice.webp" class="w-8 h-8" alt="Ice" />
+        <span>Glace</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <img src="/element/Electric.webp" class="w-8 h-8" alt="Electric" />
+        <span>Électrique</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <img src="/element/Wind.webp" class="w-8 h-8" alt="Wind" />
+        <span>Vent</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <img src="/element/Light.webp" class="w-8 h-8" alt="Light" />
+        <span>Lumière</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <img src="/element/Dark.webp" class="w-8 h-8" alt="Dark" />
+        <span>Ténébres</span>
+      </div>
+    </div>
+
+    <!-- Résistances -->
+    <div class="flex flex-col gap-2">
+      <div class="flex items-center gap-2">
+        <img src="/resists/resist.png" class="w-8 h-8" alt="Resist" />
+        <span>Résiste</span>
+      </div>
+      <div class="flex items-center gap-2">    
+        <img src="/resists/weak.png" class="w-8 h-8" alt="Weak" />
+        <span>Faible</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <img src="/resists/null.png" class="w-8 h-8" alt="Null" />
+        <span>Annule</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <img src="/resists/reflect.png" class="w-8 h-8" alt="Reflect" />
+        <span>Renvoie</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <img src="/resists/absorb.png" class="w-8 h-8" alt="Absorb" />
+        <span>Absorbe</span>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="closeDialog()">Fermer</button>
+</mat-dialog-actions>
+

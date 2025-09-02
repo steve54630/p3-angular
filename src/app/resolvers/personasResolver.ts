@@ -13,7 +13,7 @@ export const personasResolver : ResolveFn<IPersona[]> = (route) => {
         case 'favorites':
             return favorisStore.getAll();
         case 'personas':
-            return personaStore.loadAll();
+            return personaStore.getAll();
         default:
             return [];
     }

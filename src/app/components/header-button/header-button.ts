@@ -28,6 +28,5 @@ export class HeaderButton implements OnInit {
   }
 
   @Input() title: string = '';
-  hover: boolean = false;
   isMobile: boolean = false;
 }
